@@ -6,11 +6,16 @@ URL = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"
 
 
 def fetch(currencies):
+    api_key = os.getenv("COINMARKETCAP_APIKEY")
+
+    if not api_key:
+        return {}
+
     currencies = set(map(lambda string: string.upper(), currencies))
 
     headers = {
         "Accept": "application/json",
-        "X-CMC_PRO_API_KEY": os.getenv("COINMARKETCAP_APIKEY"),
+        "X-CMC_PRO_API_KEY": api_key,
     }
 
     params = {

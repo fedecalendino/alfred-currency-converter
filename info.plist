@@ -25,7 +25,7 @@
 	<key>createdby</key>
 	<string>Fede Calendino</string>
 	<key>description</key>
-	<string>Convert between multiple currencies 💱️</string>
+	<string>Convert between multiple fiat and crypto currencies 💱️</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
