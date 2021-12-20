@@ -102,7 +102,7 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Convert between multiple currencies 💱️</string>
+	<string>Convert between multiple fiat and crypto currencies 💱️</string>
 	<key>uidata</key>
 	<dict>
 		<key>3934B245-E510-48B5-A592-5027A675D443</key>
@@ -134,7 +134,7 @@
 		<string>COINMARKETCAP_APIKEY</string>
 	</array>
 	<key>version</key>
-	<string>1.2</string>
+	<string>2.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-currency-converter</string>
 </dict>
