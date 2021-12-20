@@ -122,11 +122,17 @@
 	</dict>
 	<key>variables</key>
 	<dict>
-		<key>CURRENCIES</key>
-		<string>CZK, EUR, USD, ARS</string>
+		<key>COINMARKETCAP_APIKEY</key>
+		<string>c88799bb-e01a-4663-8612-1e8d8eedeb6c</string>
+		<key>CRYPTO</key>
+		<string>ADA, CRO, ETH</string>
+		<key>FIAT</key>
+		<string>CZK, EUR, GBP, USD</string>
 	</dict>
 	<key>variablesdontexport</key>
-	<array/>
+	<array>
+		<string>COINMARKETCAP_APIKEY</string>
+	</array>
 	<key>version</key>
 	<string>1.2</string>
 	<key>webaddress</key>

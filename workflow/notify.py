@@ -36,7 +36,6 @@ import uuid
 
 import workflow
 
-
 _wf = None
 _log = None
 

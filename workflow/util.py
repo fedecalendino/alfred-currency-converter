@@ -13,8 +13,6 @@
 from __future__ import print_function, absolute_import
 
 import atexit
-from collections import namedtuple
-from contextlib import contextmanager
 import errno
 import fcntl
 import functools
@@ -23,8 +21,10 @@ import os
 import signal
 import subprocess
 import sys
-from threading import Event
 import time
+from collections import namedtuple
+from contextlib import contextmanager
+from threading import Event
 
 # JXA scripts to call Alfred's API via the Scripting Bridge
 # {app} is automatically replaced with "Alfred 3" or

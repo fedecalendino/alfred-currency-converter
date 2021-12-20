@@ -23,7 +23,6 @@ from __future__ import print_function, unicode_literals
 
 import binascii
 import cPickle
-from copy import deepcopy
 import json
 import logging
 import logging.handlers
@@ -37,6 +36,7 @@ import subprocess
 import sys
 import time
 import unicodedata
+from copy import deepcopy
 
 try:
     import xml.etree.cElementTree as ET

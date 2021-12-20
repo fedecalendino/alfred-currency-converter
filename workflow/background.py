@@ -19,11 +19,11 @@ and examples.
 
 from __future__ import print_function, unicode_literals
 
-import signal
-import sys
 import os
-import subprocess
 import pickle
+import signal
+import subprocess
+import sys
 
 from workflow import Workflow
 

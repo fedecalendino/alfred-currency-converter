@@ -23,16 +23,16 @@
 
 from __future__ import print_function, unicode_literals
 
-from collections import defaultdict
-from functools import total_ordering
 import json
 import os
-import tempfile
 import re
 import subprocess
+import tempfile
+from collections import defaultdict
+from functools import total_ordering
 
-import workflow
 import web
+import workflow
 
 # __all__ = []
 

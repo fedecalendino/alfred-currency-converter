@@ -3,7 +3,8 @@
 import os
 import sys
 
-from workflow import web, Workflow
+import providers
+from workflow import Workflow
 
 
 def error(title, subtitle=None):
@@ -41,53 +42,78 @@ def get_parameters(workflow):
         error("'{}' is not a valid amount".format(workflow.args[0]))
 
 
-def get_currencies():
-    return os.getenv("CURRENCIES", "").replace(" ", "").split(",")
+def getenv(key):
+    return os.getenv(key, "").replace(" ", "").split(",")
 
 
-def fetch_exchanges(currency, currencies):
-    response = web.get("https://tw.rter.info/capi.php").json()
-    key = "USD{}".format(currency)
+def fetch_exchanges(currency):
+    cryptos = [currency] + getenv("CRYPTO")
+    fiats = [currency] + getenv("FIAT")
 
-    if key not in response:
-        error("'{}' is not a valid currency".format(currency))
+    exchanges = {}
 
-    usd = response[key]["Exrate"]
+    for cur, ex in providers.crypto(cryptos).items():
+        if cur in exchanges:
+            continue
 
-    return {
-        cur: response["USD{}".format(cur)]["Exrate"] / usd
-        for cur in currencies if "USD{}".format(cur) in response
-    }
+        if not ex:
+            continue
+
+        exchanges[cur] = {
+            "type": "crypto",
+            "exchange": ex,
+        }
+
+    for cur, ex in providers.fiat(fiats).items():
+        if cur in exchanges:
+            continue
+
+        if not ex:
+            continue
+
+        exchanges[cur] = {
+            "type": "fiat",
+            "exchange": ex,
+        }
+
+    return exchanges
 
 
 def main(workflow):
     amount, currency = get_parameters(workflow)
-    currencies = get_currencies()
-    exchanges = fetch_exchanges(currency, currencies)
+    currency = currency.upper()
 
-    for cur in currencies:
+    exchanges = fetch_exchanges(currency)
+
+    if currency not in exchanges:
+        raise ValueError("'{}' is not a valid currency".format(currency))
+
+    exchange = exchanges[currency]["exchange"]
+
+    for cur, info in exchanges.items():
         if cur == currency:
             continue
 
-        if cur not in exchanges:
+        if info is None:
             workflow.add_item(
                 title="'{}' is not a valid currency".format(cur),
                 valid=False
             )
             continue
 
-        ex = exchanges[cur]
+        type_ = info["type"]
+        ex = info["exchange"]
 
-        title = "{:0.2f} {}".format(amount * ex, cur)
-        subtitle = "1 {} = {:0.4f} {}".format(currency, ex, cur)
+        title = "{:0.2f} {}".format(amount * ex / exchange, cur)
+        subtitle = "1 {} = {:0.4f} {}".format(currency, ex / exchange, cur)
 
         workflow.add_item(
             title=title,
             subtitle=subtitle,
             arg=title.split(" ")[0],
             copytext=title,
-            icon="./img/flags/{}.png".format(cur.lower()),
-            valid=True
+            icon="./img/{}/{}.png".format(type_, cur).lower(),
+            valid=True,
         )
 
 
