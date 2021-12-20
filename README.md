@@ -3,7 +3,8 @@
 ![Currency Converter example](/img/example.png)
 
 
-CURRENCIES env var is a comma separated list of currencies.
+* `CRYPTOS` env var is a comma separated list of crypto currencies (BTC, ETH, CRO, etc).
+* `FIATS` env var is a comma separated list of fiat currencies (USD, ARS, CZK, etc).
 
 ![Currency Converter vars](/img/vars.png)
 
