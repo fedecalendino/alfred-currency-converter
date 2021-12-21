@@ -17,6 +17,11 @@ def fetch(currencies):
         if key not in data:
             exchanges[currency] = None
         else:
-            exchanges[currency] = data[key]["Exrate"]
+            exchanges[currency] = {
+                "currency": currency,
+                "img": "./img/fiat/{}.png".format(currency).lower(),
+                "exchange": data[key]["Exrate"],
+                "type": "fiat",
+            }
 
     return exchanges

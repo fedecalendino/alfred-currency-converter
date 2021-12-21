@@ -102,7 +102,14 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Convert between multiple fiat and crypto currencies 💱️</string>
+	<string>Convert between multiple fiat and crypto currencies 💱️
+
+
+Environment Variables:
+
+* COINMARKETCAP_API_KEY: API key for https://coinmarketcap.com/api
+* CRYPTO: Comma separated list of crypto currency symbols
+* FIAT: Comma separated list of fiat currency symbols</string>
 	<key>uidata</key>
 	<dict>
 		<key>3934B245-E510-48B5-A592-5027A675D443</key>
@@ -122,8 +129,8 @@
 	</dict>
 	<key>variables</key>
 	<dict>
-		<key>COINMARKETCAP_APIKEY</key>
-		<string>c88799bb-e01a-4663-8612-1e8d8eedeb6c</string>
+		<key>COINMARKETCAP_API_KEY</key>
+		<string>e8c64aba-e2c8-47f1-8861-9b884abafe6e</string>
 		<key>CRYPTO</key>
 		<string>ADA, CRO, ETH</string>
 		<key>FIAT</key>
@@ -131,10 +138,10 @@
 	</dict>
 	<key>variablesdontexport</key>
 	<array>
-		<string>COINMARKETCAP_APIKEY</string>
+		<string>COINMARKETCAP_API_KEY</string>
 	</array>
 	<key>version</key>
-	<string>2.0</string>
+	<string>2.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-currency-converter</string>
 </dict>

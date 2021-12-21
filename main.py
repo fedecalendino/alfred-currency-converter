@@ -15,7 +15,7 @@ def error(title, subtitle=None):
 
 
 def parse_amount(amount):
-    amount = amount.upper().replace(',', '.')
+    amount = amount.upper().replace(",", ".")
 
     if amount.endswith("M"):
         mod = 1000000
@@ -52,29 +52,23 @@ def fetch_exchanges(currency):
 
     exchanges = {}
 
-    for cur, ex in providers.crypto(cryptos).items():
+    for cur, info in providers.crypto(cryptos).items():
         if cur in exchanges:
             continue
 
-        if not ex:
+        if not info:
             continue
 
-        exchanges[cur] = {
-            "type": "crypto",
-            "exchange": ex,
-        }
+        exchanges[cur] = info
 
-    for cur, ex in providers.fiat(fiats).items():
+    for cur, info in providers.fiat(fiats).items():
         if cur in exchanges:
             continue
 
-        if not ex:
+        if not info:
             continue
 
-        exchanges[cur] = {
-            "type": "fiat",
-            "exchange": ex,
-        }
+        exchanges[cur] = info
 
     return exchanges
 
@@ -90,29 +84,46 @@ def main(workflow):
 
     exchange = exchanges[currency]["exchange"]
 
-    for cur, info in exchanges.items():
+    currencies = sorted(
+        exchanges.values(),
+        key=lambda c: c["type"],
+        reverse=True,
+    )
+
+    for info in currencies:
+        cur = info["currency"]
+
         if cur == currency:
             continue
 
         if info is None:
             workflow.add_item(
                 title="'{}' is not a valid currency".format(cur),
-                valid=False
+                valid=False,
             )
             continue
 
-        type_ = info["type"]
         ex = info["exchange"]
+        total = amount * ex / exchange
 
-        title = "{:0.2f} {}".format(amount * ex / exchange, cur)
-        subtitle = "1 {} = {:0.4f} {}".format(currency, ex / exchange, cur)
+        if total < 1:
+            title = "{:0.6f} {}".format(total, cur)
+        else:
+            title = "{:0.2f} {}".format(total, cur)
+
+        subtitle = "[{}] 1 {} = {:0.4f} {}".format(
+            info["type"],
+            currency,
+            ex / exchange,
+            cur,
+        )
 
         workflow.add_item(
             title=title,
             subtitle=subtitle,
             arg=title.split(" ")[0],
             copytext=title,
-            icon="./img/{}/{}.png".format(type_, cur).lower(),
+            icon=info["img"],
             valid=True,
         )
 
