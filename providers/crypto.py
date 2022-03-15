@@ -1,6 +1,6 @@
 import os
 
-from workflow import web
+import requests
 
 
 BASE_URL = "https://pro-api.coinmarketcap.com/v1"
@@ -30,7 +30,7 @@ def fetch(currencies):
         "symbol": ",".join(currencies),
     }
 
-    response = web.get(QUOTES_URL, headers=headers, params=params)
+    response = requests.get(QUOTES_URL, headers=headers, params=params)
     data = response.json()["data"]
 
     exchanges = {}
@@ -65,6 +65,6 @@ def get_image(id_):
     url = IMAGE_URL.format(id=id_)
 
     with open(filename, "wb") as f:
-        f.write(web.get(url).content)
+        f.write(requests.get(url).content)
 
     return f.name

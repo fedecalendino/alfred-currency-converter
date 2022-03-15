@@ -1,4 +1,4 @@
-from workflow import web
+import requests
 
 URL = "https://tw.rter.info/capi.php"
 
@@ -6,7 +6,7 @@ URL = "https://tw.rter.info/capi.php"
 def fetch(currencies):
     currencies = set(map(lambda string: string.upper(), currencies))
 
-    response = web.get(URL)
+    response = requests.get(URL)
     data = response.json()
 
     exchanges = {}
