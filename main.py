@@ -128,7 +128,7 @@ def main(workflow):
         )
 
 
-if __name__ == u"__main__":
+if __name__ == "__main__":
     wf = Workflow()
     wf.run(main)
     wf.send_feedback()
