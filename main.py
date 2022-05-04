@@ -74,26 +74,20 @@ def fetch_exchanges(currency):
 
 
 def main(workflow):
-    amount, currency = get_parameters(workflow)
-    currency = currency.upper()
+    selected_amount, selected_currency = get_parameters(workflow)
+    selected_currency = selected_currency.upper()
 
-    exchanges = fetch_exchanges(currency)
+    exchanges = fetch_exchanges(selected_currency)
 
-    if currency not in exchanges:
-        raise ValueError("'{}' is not a valid currency".format(currency))
+    if selected_currency not in exchanges:
+        raise ValueError("'{}' is not a valid currency".format(selected_currency))
 
-    exchange = exchanges[currency]["exchange"]
+    selected_exchange = exchanges[selected_currency]["exchange"]
 
-    currencies = sorted(
-        exchanges.values(),
-        key=lambda c: c["type"],
-        reverse=True,
-    )
+    for cur in getenv("FIAT") + getenv("CRYPTO"):
+        info = exchanges[cur]
 
-    for info in currencies:
-        cur = info["currency"]
-
-        if cur == currency:
+        if cur == selected_currency:
             continue
 
         if info is None:
@@ -104,7 +98,7 @@ def main(workflow):
             continue
 
         ex = info["exchange"]
-        total = amount * ex / exchange
+        total = selected_amount * ex / selected_exchange
 
         if total < 1:
             title = "{:0.6f} {}".format(total, cur)
@@ -113,8 +107,8 @@ def main(workflow):
 
         subtitle = "[{}] 1 {} = {:0.4f} {}".format(
             info["type"],
-            currency,
-            ex / exchange,
+            selected_currency,
+            ex / selected_exchange,
             cur,
         )
 

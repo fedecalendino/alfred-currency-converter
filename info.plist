@@ -115,18 +115,20 @@ Environment Variables:
 		<key>3934B245-E510-48B5-A592-5027A675D443</key>
 		<dict>
 			<key>xpos</key>
-			<integer>295</integer>
+			<real>280</real>
 			<key>ypos</key>
-			<integer>25</integer>
+			<real>15</real>
 		</dict>
 		<key>83356B03-74A9-4E7B-966B-6C42A04EC032</key>
 		<dict>
 			<key>xpos</key>
-			<integer>45</integer>
+			<real>30</real>
 			<key>ypos</key>
-			<integer>25</integer>
+			<real>15</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
 	<key>variables</key>
 	<dict>
 		<key>COINMARKETCAP_API_KEY</key>
