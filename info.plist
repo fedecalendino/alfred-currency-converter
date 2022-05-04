@@ -132,7 +132,7 @@ Environment Variables:
 		<key>COINMARKETCAP_API_KEY</key>
 		<string>e8c64aba-e2c8-47f1-8861-9b884abafe6e</string>
 		<key>CRYPTO</key>
-		<string>ADA, CRO, ETH</string>
+		<string>ADA, ATOM, ERG</string>
 		<key>FIAT</key>
 		<string>CZK, EUR, GBP, USD</string>
 	</dict>
