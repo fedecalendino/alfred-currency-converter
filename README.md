@@ -1,12 +1,14 @@
-### [Alfred Workflow](https://www.alfredapp.com/workflows/) to convert between multiple fiat and crypto currencies 💱️
+## ALFRED-CURRENCY-CONVERTER
+
+[Alfred Workflow](https://www.alfredapp.com/workflows/) to convert between multiple fiat and crypto currencies 💱️
 
 
-#### Set Up:
+#### set Up:
 
 ![vars example](./img/screenshots/vars.png)
 
 
-#### Usage:
+#### usage:
 
 ![usage vars](./img/screenshots/usage.png)
 

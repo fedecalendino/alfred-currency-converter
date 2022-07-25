@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "Currency Converter"
+version = "2.3.0"
+description = "Convert between multiple fiat and crypto currencies"
+documentation = "https://github.com/fedecalendino/alfred-currency-converter/blob/main/README.md"
+homepage = "https://github.com/fedecalendino/alfred-currency-converter"
+license = "MIT"
+
+authors = [
+    "Fede Calendino <fede@calendino.com>"
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+alfred-pyflow = "*"
+requests = "^2.28.1"
+
+[tool.poetry.dev-dependencies]
+black = "*"
+coverage = "*"
+ddt = "*"
+pyinstaller = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

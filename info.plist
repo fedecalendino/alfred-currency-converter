@@ -8,11 +8,11 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
-		<key>83356B03-74A9-4E7B-966B-6C42A04EC032</key>
+		<key>A0A856C3-BD77-4997-9BDB-6224830CA5F6</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3934B245-E510-48B5-A592-5027A675D443</string>
+				<string>E7297BE8-FCA7-4611-88C0-2DB88C427794</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -35,6 +35,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>E7297BE8-FCA7-4611-88C0-2DB88C427794</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -44,7 +63,7 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
@@ -52,7 +71,7 @@
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<true/>
+				<false/>
 				<key>queuedelaymode</key>
 				<integer>1</integer>
 				<key>queuemode</key>
@@ -60,7 +79,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>python3 ./main.py $@</string>
+				<string>./dist/main $@</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -77,26 +96,7 @@
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>83356B03-74A9-4E7B-966B-6C42A04EC032</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>3934B245-E510-48B5-A592-5027A675D443</string>
+			<string>A0A856C3-BD77-4997-9BDB-6224830CA5F6</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
@@ -112,17 +112,17 @@ Environment Variables:
 * FIAT: Comma separated list of fiat currency symbols</string>
 	<key>uidata</key>
 	<dict>
-		<key>3934B245-E510-48B5-A592-5027A675D443</key>
-		<dict>
-			<key>xpos</key>
-			<real>280</real>
-			<key>ypos</key>
-			<real>15</real>
-		</dict>
-		<key>83356B03-74A9-4E7B-966B-6C42A04EC032</key>
+		<key>A0A856C3-BD77-4997-9BDB-6224830CA5F6</key>
 		<dict>
 			<key>xpos</key>
 			<real>30</real>
+			<key>ypos</key>
+			<real>15</real>
+		</dict>
+		<key>E7297BE8-FCA7-4611-88C0-2DB88C427794</key>
+		<dict>
+			<key>xpos</key>
+			<real>280</real>
 			<key>ypos</key>
 			<real>15</real>
 		</dict>
@@ -143,7 +143,7 @@ Environment Variables:
 		<string>COINMARKETCAP_API_KEY</string>
 	</array>
 	<key>version</key>
-	<string>2.2</string>
+	<string>2.3.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-currency-converter</string>
 </dict>
