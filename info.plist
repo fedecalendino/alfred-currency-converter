@@ -79,7 +79,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>./dist/main $@</string>
+				<string>./dist/main/main $@</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -143,7 +143,7 @@ Environment Variables:
 		<string>COINMARKETCAP_API_KEY</string>
 	</array>
 	<key>version</key>
-	<string>2.3.0</string>
+	<string>2.4.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-currency-converter</string>
 </dict>
