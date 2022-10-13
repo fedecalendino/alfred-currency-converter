@@ -128,22 +128,73 @@ Environment Variables:
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
-	<array/>
-	<key>variables</key>
-	<dict>
-		<key>COINMARKETCAP_API_KEY</key>
-		<string>e8c64aba-e2c8-47f1-8861-9b884abafe6e</string>
-		<key>CRYPTO</key>
-		<string>ADA, ATOM, ERG</string>
-		<key>FIAT</key>
-		<string>CZK, EUR, GBP, USD</string>
-	</dict>
-	<key>variablesdontexport</key>
 	<array>
-		<string>COINMARKETCAP_API_KEY</string>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>COINMARKETCAP_API_KEY</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>COINMARKETCAP_API_KEY</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+				<key>verticalsize</key>
+				<integer>6</integer>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>CRYPTO</string>
+			<key>type</key>
+			<string>textarea</string>
+			<key>variable</key>
+			<string>CRYPTO</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+				<key>verticalsize</key>
+				<integer>6</integer>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>FIAT</string>
+			<key>type</key>
+			<string>textarea</string>
+			<key>variable</key>
+			<string>FIAT</string>
+		</dict>
 	</array>
 	<key>version</key>
-	<string>2.5.0</string>
+	<string>2.6.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-currency-converter</string>
 </dict>

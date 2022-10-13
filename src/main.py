@@ -41,7 +41,7 @@ def get_parameters(workflow):
 
 
 def getenv(workflow, key):
-    return workflow.env.get(key, "").replace(" ", "").split(",")
+    return list(map(str.strip, workflow.env.get(key, "").split("\n")))
 
 
 def fetch_exchanges(workflow, currency):
