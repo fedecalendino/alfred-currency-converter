@@ -105,11 +105,24 @@
 	<string>Convert between multiple fiat and crypto currencies 💱️
 
 
-Environment Variables:
+--
 
-* COINMARKETCAP_API_KEY: API key for https://coinmarketcap.com/api
-* CRYPTO: Comma separated list of crypto currency symbols
-* FIAT: Comma separated list of fiat currency symbols</string>
+
+CRYPTO
+
+The valid ids are on coingecko's urls: https://www.coingecko.com/en/coins/{id}
+
+
+For example:
+
+  * ADA: https://www.coingecko.com/en/coins/cardano
+  * ATOM: https://www.coingecko.com/en/coins/cosmos
+  * JUNO: https://www.coingecko.com/en/coins/juno-network
+
+
+FIAT
+
+The valid 3-letter fiat currency codes can be found here: https://www.iban.com/currency-codes</string>
 	<key>uidata</key>
 	<dict>
 		<key>A0A856C3-BD77-4997-9BDB-6224830CA5F6</key>
@@ -134,27 +147,6 @@ Environment Variables:
 			<dict>
 				<key>default</key>
 				<string></string>
-				<key>placeholder</key>
-				<string></string>
-				<key>required</key>
-				<true/>
-				<key>trim</key>
-				<true/>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>label</key>
-			<string>COINMARKETCAP_API_KEY</string>
-			<key>type</key>
-			<string>textfield</string>
-			<key>variable</key>
-			<string>COINMARKETCAP_API_KEY</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string></string>
 				<key>required</key>
 				<true/>
 				<key>trim</key>
@@ -163,7 +155,7 @@ Environment Variables:
 				<integer>6</integer>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>List of coingecko identifiers for coins (one per line).</string>
 			<key>label</key>
 			<string>CRYPTO</string>
 			<key>type</key>
@@ -184,7 +176,7 @@ Environment Variables:
 				<integer>6</integer>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>List of fiat currency codes.</string>
 			<key>label</key>
 			<string>FIAT</string>
 			<key>type</key>

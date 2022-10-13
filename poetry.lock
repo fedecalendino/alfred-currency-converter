@@ -1,6 +1,6 @@
 [[package]]
 name = "alfred-pyflow"
-version = "0.3.0"
+version = "0.3.2"
 description = "Minimal library for the development of Alfred Workflows."
 category = "main"
 optional = false
@@ -38,6 +38,18 @@ colorama = ["colorama (>=0.4.3)"]
 d = ["aiohttp (>=3.7.4)"]
 jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
 uvloop = ["uvloop (>=0.15.2)"]
+
+[[package]]
+name = "ccy"
+version = "1.2.2"
+description = "Python currencies"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+python-dateutil = "*"
+pytz = "*"
 
 [[package]]
 name = "certifi"
@@ -144,6 +156,17 @@ docs = ["furo (>=2021.7.5b38)", "proselint (>=0.10.2)", "sphinx (>=4)", "sphinx-
 test = ["appdirs (==1.4.4)", "pytest (>=6)", "pytest-cov (>=2.7)", "pytest-mock (>=3.6)"]
 
 [[package]]
+name = "pycoingecko"
+version = "3.0.0"
+description = "Python wrapper around the CoinGecko API"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+requests = "*"
+
+[[package]]
 name = "pyinstaller"
 version = "5.5"
 description = "PyInstaller bundles a Python application and all its dependencies into a single package."
@@ -170,6 +193,25 @@ description = "Community maintained hooks for PyInstaller"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "python-dateutil"
+version = "2.8.2"
+description = "Extensions to the standard Python datetime module"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
+name = "pytz"
+version = "2022.4"
+description = "World timezone definitions, modern and historical"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "pywin32-ctypes"
@@ -211,6 +253,14 @@ testing = ["build[virtualenv]", "filelock (>=3.4.0)", "flake8 (<5)", "flake8-202
 testing-integration = ["build[virtualenv]", "filelock (>=3.4.0)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "pytest", "pytest-enabler", "pytest-xdist", "tomli", "virtualenv (>=13.0.0)", "wheel"]
 
 [[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
@@ -242,12 +292,12 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8,<3.11"
-content-hash = "11546e79dc5d930bc4259d0c45f1edd99fc431a47c0af457d5e99b7ac34c203e"
+content-hash = "724c19d0289033ddebd74865e59fe1a4471ce54652fb6fa98944484a1e00bd83"
 
 [metadata.files]
 alfred-pyflow = [
-    {file = "alfred-pyflow-0.3.0.tar.gz", hash = "sha256:9673c9d9e34c122b67696d1dc234482d94f5a3110241935cb1ad1ff1f37eecfb"},
-    {file = "alfred_pyflow-0.3.0-py3-none-any.whl", hash = "sha256:f4b38cfcb748c483c7dd1e71130aed7557e4c05c22ea3e5a2cbc83b45672bad4"},
+    {file = "alfred-pyflow-0.3.2.tar.gz", hash = "sha256:a7dd82d1cef2dad7f0885362bb33f0a81b7374bce014f2fbc7c684290a633a40"},
+    {file = "alfred_pyflow-0.3.2-py3-none-any.whl", hash = "sha256:f2e33b0f0dff067f83492c85b5bddb046caf20d57e3ac58b78b5df8cc4dd7678"},
 ]
 altgraph = [
     {file = "altgraph-0.17.3-py2.py3-none-any.whl", hash = "sha256:c8ac1ca6772207179ed8003ce7687757c04b0b71536f81e2ac5755c6226458fe"},
@@ -275,6 +325,13 @@ black = [
     {file = "black-22.10.0-cp39-cp39-win_amd64.whl", hash = "sha256:432247333090c8c5366e69627ccb363bc58514ae3e63f7fc75c54b1ea80fa7de"},
     {file = "black-22.10.0-py3-none-any.whl", hash = "sha256:c957b2b4ea88587b46cf49d1dc17681c1e672864fd7af32fc1e9664d572b3458"},
     {file = "black-22.10.0.tar.gz", hash = "sha256:f513588da599943e0cde4e32cc9879e825d58720d6557062d1098c5ad80080e1"},
+]
+ccy = [
+    {file = "ccy-1.2.2-py36-none-any.whl", hash = "sha256:4df50b34e977359a61d18402c18c6af6af1766d5b730380e287a7c1270c5da28"},
+    {file = "ccy-1.2.2-py37-none-any.whl", hash = "sha256:95432a4ef1eaed7e16e6d22c8f78ecbd6052590bea493aea3dda2298e561ef80"},
+    {file = "ccy-1.2.2-py38-none-any.whl", hash = "sha256:18d085376d91e10684ec36fdc59f35931cf112a642945886d4cdf56b432e20d1"},
+    {file = "ccy-1.2.2-py39-none-any.whl", hash = "sha256:1ab43bc74a7fcbf38c479168769e43ba567e3903627ab50f121b3d505eb6dc8c"},
+    {file = "ccy-1.2.2.tar.gz", hash = "sha256:a65c9ece998fe2b886f40762ed09ec2da011bd37bb8175d2066eb028508e026d"},
 ]
 certifi = [
     {file = "certifi-2022.9.24-py3-none-any.whl", hash = "sha256:90c1a32f1d68f940488354e36370f6cca89f0f106db09518524c88d6ed83f382"},
@@ -318,6 +375,10 @@ platformdirs = [
     {file = "platformdirs-2.5.2-py3-none-any.whl", hash = "sha256:027d8e83a2d7de06bbac4e5ef7e023c02b863d7ea5d079477e722bb41ab25788"},
     {file = "platformdirs-2.5.2.tar.gz", hash = "sha256:58c8abb07dcb441e6ee4b11d8df0ac856038f944ab98b7be6b27b2a3c7feef19"},
 ]
+pycoingecko = [
+    {file = "pycoingecko-3.0.0-py3-none-any.whl", hash = "sha256:f848c6f785c26944e3cb1f9425fc86a1a8cbb68016f592dc7a4ebf54d9517a12"},
+    {file = "pycoingecko-3.0.0.tar.gz", hash = "sha256:bd49d92f918bc3f03ba9c042558844992576fbee859e438ddeafefd41861d2b1"},
+]
 pyinstaller = [
     {file = "pyinstaller-5.5-py3-none-macosx_10_13_universal2.whl", hash = "sha256:838e0a385355e55833f2ac62e75290f345d0b57bad53f08742c28a7cb96e91c8"},
     {file = "pyinstaller-5.5-py3-none-manylinux2014_aarch64.whl", hash = "sha256:2a2fc8755b00cc1ea4d89bb81f8ada8c2afe0d13a7f7b35020e8a694d6882c9e"},
@@ -335,6 +396,14 @@ pyinstaller-hooks-contrib = [
     {file = "pyinstaller-hooks-contrib-2022.10.tar.gz", hash = "sha256:e5edd4094175e78c178ef987b61be19efff6caa23d266ade456fc753e847f62e"},
     {file = "pyinstaller_hooks_contrib-2022.10-py2.py3-none-any.whl", hash = "sha256:d1dd6ea059dc30e77813cc12a5efa8b1d228e7da8f5b884fe11775f946db1784"},
 ]
+python-dateutil = [
+    {file = "python-dateutil-2.8.2.tar.gz", hash = "sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"},
+    {file = "python_dateutil-2.8.2-py2.py3-none-any.whl", hash = "sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"},
+]
+pytz = [
+    {file = "pytz-2022.4-py2.py3-none-any.whl", hash = "sha256:2c0784747071402c6e99f0bafdb7da0fa22645f06554c7ae06bf6358897e9c91"},
+    {file = "pytz-2022.4.tar.gz", hash = "sha256:48ce799d83b6f8aab2020e369b627446696619e79645419610b9facd909b3174"},
+]
 pywin32-ctypes = [
     {file = "pywin32-ctypes-0.2.0.tar.gz", hash = "sha256:24ffc3b341d457d48e8922352130cf2644024a4ff09762a2261fd34c36ee5942"},
     {file = "pywin32_ctypes-0.2.0-py2.py3-none-any.whl", hash = "sha256:9dc2d991b3479cc2df15930958b674a48a227d5361d413827a4cfd0b5876fc98"},
@@ -346,6 +415,10 @@ requests = [
 setuptools = [
     {file = "setuptools-65.4.1-py3-none-any.whl", hash = "sha256:1b6bdc6161661409c5f21508763dc63ab20a9ac2f8ba20029aaaa7fdb9118012"},
     {file = "setuptools-65.4.1.tar.gz", hash = "sha256:3050e338e5871e70c72983072fe34f6032ae1cdeeeb67338199c2f74e083a80e"},
+]
+six = [
+    {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
+    {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
 ]
 tomli = [
     {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},

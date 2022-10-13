@@ -1,115 +1,94 @@
-import os
 import sys
 
-from src import providers
 from pyflow import Workflow
+from src import util, api
 
 
-def error(title, subtitle=None):
-    if subtitle:
-        title = "{}: {}".format(title, subtitle)
+def fetch_rates(workflow):
+    rates = {}
 
-    raise Exception(title)
+    fiats = util.get_env_list(workflow, "FIAT")
+    for info in api.fiat.get_rates(*fiats):
+        rates[info["symbol"]] = info
+
+    cryptos = util.get_env_list(workflow, "CRYPTO")
+    for info in api.crypto.get_rates(*cryptos):
+        rates[info["symbol"]] = info
+
+    return rates
 
 
-def parse_amount(amount):
-    amount = amount.upper().replace(",", ".")
+def fetch_rate(currency):
+    if api.fiat.is_fiat(currency):
+        return api.fiat.get_rates(currency)[0]
 
-    if amount.endswith("M"):
-        mod = 1000000
-        amount = amount[:-1]
-    elif amount.endswith("K"):
-        mod = 1000
-        amount = amount[:-1]
-    else:
-        mod = 1
-
-    return float(amount) * mod
+    return api.crypto.search(currency)
 
 
 def get_parameters(workflow):
     if len(workflow.args) != 2:
-        error("Missing parameters", "$[amount] [currency]")
+        raise ValueError("Missing parameters: $[amount] [currency]")
+
+    amount = workflow.args[0]
 
     try:
-        amount = parse_amount(workflow.args[0])
-        currency = workflow.args[1].strip().upper()
+        amount = util.parse_amount(workflow.args[0])
+    except ValueError:
+        raise ValueError(f"'{amount}' is not a valid amount")
 
-        return amount, currency
-    except:
-        error("'{}' is not a valid amount".format(workflow.args[0]))
+    currency = workflow.args[1].strip().upper()
 
-
-def getenv(workflow, key):
-    return list(map(str.strip, workflow.env.get(key, "").split("\n")))
+    return amount, currency
 
 
-def fetch_exchanges(workflow, currency):
-    cryptos = [currency] + getenv(workflow, "CRYPTO")
-    fiats = [currency] + getenv(workflow, "FIAT")
-
-    exchanges = {}
-
-    for cur, info in providers.crypto(workflow, cryptos).items():
-        if cur in exchanges:
-            continue
-
-        if not info:
-            continue
-
-        exchanges[cur] = info
-
-    for cur, info in providers.fiat(fiats).items():
-        if cur in exchanges:
-            continue
-
-        if not info:
-            continue
-
-        exchanges[cur] = info
-
-    return exchanges
+def add_image_to_item(item, img: str, id_: str):
+    if "http" in img:
+        item.set_icon_url(url=img, filename=f"{id_}.png")
+    else:
+        item.set_icon_file(path=img)
 
 
 def main(workflow):
-    selected_amount, selected_currency = get_parameters(workflow)
-    selected_currency = selected_currency.upper()
+    input_amount, input_currency = get_parameters(workflow)
+    input_info = fetch_rate(input_currency)
 
-    workflow.logger.debug("WTF1")
+    if input_info is None:
+        raise ValueError("'{}' is not a valid currency".format(input_currency))
 
-    exchanges = fetch_exchanges(workflow, selected_currency)
+    input_price = input_info["price"]
 
-    if selected_currency not in exchanges:
-        raise ValueError("'{}' is not a valid currency".format(selected_currency))
+    item = workflow.new_item(
+        title=input_info["name"],
+        subtitle=input_info["symbol"] + " / " + input_info["type"],
+        valid=False,
+    )
 
-    selected_exchange = exchanges[selected_currency]["exchange"]
+    add_image_to_item(item, input_info["img"], input_info["id"])
 
-    for cur in getenv(workflow, "FIAT") + getenv(workflow, "CRYPTO"):
-        info = exchanges[cur]
-
-        if cur == selected_currency:
+    for key, info in fetch_rates(workflow).items():
+        if info["symbol"] == input_currency:
             continue
 
         if info is None:
             workflow.new_item(
-                title="'{}' is not a valid currency".format(cur),
+                title=f"'{key}' is not a valid currency",
                 valid=False,
             )
             continue
 
-        ex = info["exchange"]
-        total = selected_amount * ex / selected_exchange
+        ex = info["price"]
+        total = input_amount * ex / input_price
 
         if total < 1:
-            title = "{:0.6f} {}".format(total, cur)
+            title = f"{total:0.6f} {info['symbol']}"
         else:
-            title = "{:0.2f} {}".format(total, cur)
+            title = f"{total:0.2f} {info['symbol']}"
 
         subtitle = "[{}] 1 {} = {:0.4f} {}".format(
             info["type"],
-            selected_currency,
-            ex / selected_exchange,
-            cur,
+            input_currency,
+            ex / input_price,
+            info["symbol"],
         )
 
         item = workflow.new_item(
@@ -119,11 +98,7 @@ def main(workflow):
             copytext=title,
             valid=True,
         )
-
-        if "http" in info["img"]:
-            item.set_icon_url(info["img"], f"{cur}.png")
-        else:
-            item.set_icon_file(info["img"])
+        add_image_to_item(item, info["img"], info["id"])
 
 
 if __name__ == "__main__":
