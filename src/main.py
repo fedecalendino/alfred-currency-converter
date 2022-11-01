@@ -1,7 +1,9 @@
 import sys
 
 from pyflow import Workflow
-from src import util, api
+
+import api
+import util
 
 
 def fetch_rates(workflow):
