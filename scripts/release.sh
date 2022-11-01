@@ -15,7 +15,7 @@ echo "NEW VERSION: v$VERSION"
 echo
 
 
-echo "Building binaries..."
+echo "Building dist..."
 echo
 ./scripts/build.sh > /dev/null
 echo
