@@ -5,7 +5,7 @@
 	<key>bundleid</key>
 	<string>com.github.fedecalendino.alfred-currency-converter</string>
 	<key>category</key>
-	<string>Tools</string>
+	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>A0A856C3-BD77-4997-9BDB-6224830CA5F6</key>
@@ -67,7 +67,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>$</string>
+				<string>{var:keyword}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -142,6 +142,27 @@ The valid 3-letter fiat currency codes can be found here: https://www.iban.com/c
 	</dict>
 	<key>userconfigurationconfig</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>$</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword to convert between multiple fiat and crypto currencies.</string>
+			<key>label</key>
+			<string>Currency Converter Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>keyword</string>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
