@@ -77,7 +77,7 @@
 				<key>queuemode</key>
 				<integer>2</integer>
 				<key>runningsubtext</key>
-				<string></string>
+				<string>Fetching exchanges...</string>
 				<key>script</key>
 				<string>/usr/bin/python3 ./dist/main.py $@</string>
 				<key>scriptargtype</key>
@@ -207,7 +207,7 @@ The valid 3-letter fiat currency codes can be found here: https://www.iban.com/c
 		</dict>
 	</array>
 	<key>version</key>
-	<string>2.7.0</string>
+	<string>2.7.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-currency-converter</string>
 </dict>
