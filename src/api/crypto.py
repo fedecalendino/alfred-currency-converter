@@ -8,7 +8,7 @@ def get_rates(*ids):
 
     for coin in client.get_coins_markets("usd", ids=",".join(ids), per_page=10):
         if not coin["market_cap_rank"]:
-            continue
+            coin["market_cap_rank"] = -1
 
         rates.append(
             {
