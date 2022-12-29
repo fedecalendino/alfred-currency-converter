@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Currency Converter"
-version = "2.7.2"
+version = "2.7.3"
 description = "Convert between multiple fiat and crypto currencies"
 documentation = "https://github.com/fedecalendino/alfred-currency-converter/blob/main/README.md"
 homepage = "https://github.com/fedecalendino/alfred-currency-converter"

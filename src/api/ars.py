@@ -6,13 +6,13 @@ import requests
 @lru_cache
 def get_blackmarket_usd() -> float:
     response = requests.get(
-        "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
+        "https://www.dolarsi.com/api/api.php?type=dolar"
     )
 
     for item in response.json():
         item = item["casa"]
 
-        if item["nombre"] == "Dolar Blue":
+        if item["nombre"] == "Blue":
             compra = float(item["compra"].replace(",", "."))
             venta = float(item["venta"].replace(",", "."))
 
