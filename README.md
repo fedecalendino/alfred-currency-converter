@@ -5,7 +5,7 @@
 
 #### Configuration:
 
-![config example](./img/screenshots/config.png)
+![config example](screenshots/config.png)
 
 
 CRYPTO
@@ -26,5 +26,5 @@ The valid 3-letter fiat currency codes can be found here: https://www.iban.com/c
 
 #### Usage:
 
-![usage example](./img/screenshots/usage.png)
+![usage example](screenshots/usage.png)
 
