@@ -7,7 +7,7 @@ URL = "https://tw.rter.info/capi.php"
 RATES = {
     key[3:]: value["Exrate"]
     for key, value in requests.get(URL).json().items()
-    if key.startswith("USD")
+    if key.startswith("USD") and key not in ["USDBTC"]
 }
 
 

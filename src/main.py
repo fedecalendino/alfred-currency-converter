@@ -82,11 +82,11 @@ def main(workflow):
         total = input_amount * ex / input_price
 
         if total < 1:
-            title = f"{total:0.6f} {info['symbol']}"
+            title = f"{total:,.6f} {info['symbol']}"
         else:
-            title = f"{total:0.2f} {info['symbol']}"
+            title = f"{total:,.2f} {info['symbol']}"
 
-        subtitle = "[{}] 1 {} = {:0.4f} {}".format(
+        subtitle = "[{}] 1 {} = {:,.4f} {}".format(
             info["type"],
             input_currency,
             ex / input_price,
@@ -113,7 +113,7 @@ def main(workflow):
         item = workflow.new_item(
             title=title,
             subtitle=subtitle,
-            arg=title.split(" ")[0],
+            arg=title.split(" ")[0].replace(",", ""),
             copytext=title,
             valid=True,
         )
@@ -123,12 +123,12 @@ def main(workflow):
         if mod_subtitle:
             item.set_cmd_mod(
                 subtitle=mod_subtitle,
-                arg=mod_subtitle.split(" ")[1],
+                arg=mod_subtitle.split(" ")[1].replace(",", ""),
             )
 
             item.set_alt_mod(
                 subtitle=mod_subtitle,
-                arg=mod_subtitle.split(" ")[1],
+                arg=mod_subtitle.split(" ")[1].replace(",", ""),
             )
 
 
