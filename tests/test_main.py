@@ -3,7 +3,7 @@ from pyflow.testing import WorklowTestCase
 from main import main
 
 
-class TestWorkflow(WorklowTestCase):
+class TestMain(WorklowTestCase):
     def test_run(self):
         envs = {
             "CRYPTO": "bitcoin",
