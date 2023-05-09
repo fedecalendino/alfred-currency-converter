@@ -1,12 +1,13 @@
 import sys
 
-from pyflow import Workflow
+from pyflow.item import Item
+from pyflow.workflow import Workflow
 
 import api
 import util
 
 
-def fetch_rates(workflow):
+def fetch_rates(workflow: Workflow):
     rates = {}
 
     fiats = util.get_env_list(workflow, "FIAT")
@@ -20,14 +21,14 @@ def fetch_rates(workflow):
     return rates
 
 
-def fetch_rate(currency):
+def fetch_rate(currency: str):
     if api.fiat.is_fiat(currency):
         return api.fiat.get_rates(currency)[0]
 
     return api.crypto.search(currency)
 
 
-def get_parameters(workflow):
+def get_parameters(workflow: Workflow):
     if len(workflow.args) != 2:
         raise ValueError("Missing parameters: $[amount] [currency]")
 
@@ -43,14 +44,14 @@ def get_parameters(workflow):
     return amount, currency
 
 
-def add_image_to_item(item, img: str, id_: str):
+def add_image_to_item(item: Item, img: str, id_: str):
     if "http" in img:
         item.set_icon_url(url=img, filename=f"{id_}.png")
     else:
         item.set_icon_file(path=img)
 
 
-def main(workflow):
+def main(workflow: Workflow):
     input_amount, input_currency = get_parameters(workflow)
     input_info = fetch_rate(input_currency)
 

@@ -5,9 +5,7 @@ import requests
 
 @lru_cache
 def get_blackmarket_usd() -> float:
-    response = requests.get(
-        "https://www.dolarsi.com/api/api.php?type=dolar"
-    )
+    response = requests.get("https://www.dolarsi.com/api/api.php?type=dolar")
 
     for item in response.json():
         item = item["casa"]
