@@ -207,7 +207,7 @@ The valid 3-letter fiat currency codes can be found here: https://www.iban.com/c
 		</dict>
 	</array>
 	<key>version</key>
-	<string>2.7.4</string>
+	<string>2.7.5</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-currency-converter</string>
 </dict>
