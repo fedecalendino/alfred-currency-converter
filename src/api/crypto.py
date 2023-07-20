@@ -1,9 +1,13 @@
+from time import sleep
+
 from pycoingecko import CoinGeckoAPI
 
 client = CoinGeckoAPI()
 
 
 def get_rates(*ids):
+    sleep(1)
+
     rates = []
 
     for coin in client.get_coins_markets("usd", ids=",".join(ids), per_page=10):
@@ -25,6 +29,8 @@ def get_rates(*ids):
 
 
 def search(symbol: str) -> list:
+    sleep(1)
+
     symbol = symbol.lower()
 
     ids = []
