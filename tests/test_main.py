@@ -25,11 +25,7 @@ class TestMain(WorklowTestCase):
         self.assertTrue(usd["title"].endswith("USD"))
         self.assertTrue(usd["subtitle"].startswith("[fiat] 1 ARS"))
         self.assertTrue(usd["subtitle"].endswith("USD"))
-        self.assertIn("(ARS blackmarket)", usd["mods"]["alt"]["subtitle"])
-        self.assertIn("(ARS blackmarket)", usd["mods"]["cmd"]["subtitle"])
 
         self.assertTrue(btc["title"].endswith("BTC"))
         self.assertTrue(btc["subtitle"].startswith("[crypto] 1 ARS"))
         self.assertTrue(btc["subtitle"].endswith("BTC"))
-        self.assertIn("(ARS blackmarket)", usd["mods"]["alt"]["subtitle"])
-        self.assertIn("(ARS blackmarket)", btc["mods"]["cmd"]["subtitle"])

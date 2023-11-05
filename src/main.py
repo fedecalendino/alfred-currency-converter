@@ -94,23 +94,6 @@ def main(workflow: Workflow):
             info["symbol"],
         )
 
-        mod_subtitle = None
-
-        if key == "ARS":
-            blackmarket_usd = api.ars.get_blackmarket_usd()
-            blackmarket_total = input_amount * blackmarket_usd / input_price
-
-            mod_subtitle = (
-                f"🔵 {blackmarket_total:0.2f} {info['symbol']} (ARS blackmarket)"
-            )
-        elif input_currency == "ARS":
-            blackmarket_usd = api.ars.get_blackmarket_usd()
-            blackmarket_total = input_amount * ex / blackmarket_usd
-
-            mod_subtitle = (
-                f"🔵 {blackmarket_total:0.2f} {info['symbol']} (ARS blackmarket)"
-            )
-
         item = workflow.new_item(
             title=title,
             subtitle=subtitle,
@@ -120,17 +103,6 @@ def main(workflow: Workflow):
         )
 
         add_image_to_item(item, info["img"], info["id"])
-
-        if mod_subtitle:
-            item.set_cmd_mod(
-                subtitle=mod_subtitle,
-                arg=mod_subtitle.split(" ")[1].replace(",", ""),
-            )
-
-            item.set_alt_mod(
-                subtitle=mod_subtitle,
-                arg=mod_subtitle.split(" ")[1].replace(",", ""),
-            )
 
 
 if __name__ == "__main__":
