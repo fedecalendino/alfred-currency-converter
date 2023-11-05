@@ -107,22 +107,24 @@
 
 --
 
+FIAT
+
+The valid 3-letter fiat currency codes can be found here: https://www.iban.com/currency-codes
+
 
 CRYPTO
 
-The valid ids are on coingecko's urls: https://www.coingecko.com/en/coins/{id}
+The list of cryptocurrencies' API ids from CoinGecko.
 
 
 For example:
 
+  * ALGO: https://www.coingecko.com/en/coins/algorand
   * ADA: https://www.coingecko.com/en/coins/cardano
-  * ATOM: https://www.coingecko.com/en/coins/cosmos
-  * JUNO: https://www.coingecko.com/en/coins/juno-network
+  * ETH: https://www.coingecko.com/en/coins/ethereum
 
 
-FIAT
-
-The valid 3-letter fiat currency codes can be found here: https://www.iban.com/currency-codes</string>
+**Note**: An API key from CoinGecko is required for cryptocurrencies prices, you can create a demo account by [following this guide](https://support.coingecko.com/hc/en-us/articles/21880397454233-User-Guide-How-to-use-Demo-plan-API-key-).</string>
 	<key>uidata</key>
 	<dict>
 		<key>A0A856C3-BD77-4997-9BDB-6224830CA5F6</key>
@@ -176,7 +178,7 @@ The valid 3-letter fiat currency codes can be found here: https://www.iban.com/c
 				<integer>6</integer>
 			</dict>
 			<key>description</key>
-			<string>List of coingecko identifiers for coins (one per line).</string>
+			<string>List of coingecko API ids for cryptocurrencies (one per line).</string>
 			<key>label</key>
 			<string>CRYPTO</string>
 			<key>type</key>
@@ -205,9 +207,30 @@ The valid 3-letter fiat currency codes can be found here: https://www.iban.com/c
 			<key>variable</key>
 			<string>FIAT</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>(required for cryptocurrencies)</string>
+			<key>label</key>
+			<string>Coingecko API Key</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>COINGECKO_API_KEY</string>
+		</dict>
 	</array>
 	<key>version</key>
-	<string>2.7.7</string>
+	<string>2.8.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/fedecalendino/alfred-currency-converter</string>
 </dict>

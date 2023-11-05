@@ -8,21 +8,25 @@
 ![config example](screenshots/config.png)
 
 
-CRYPTO
-
-The valid ids are on coingecko's urls: https://www.coingecko.com/en/coins/{id}
-
-
-For example:
-
-  * ADA: https://www.coingecko.com/en/coins/cardano
-  * ATOM: https://www.coingecko.com/en/coins/cosmos
-  * JUNO: https://www.coingecko.com/en/coins/juno-network
-
 
 FIAT
 
 The valid 3-letter fiat currency codes can be found here: https://www.iban.com/currency-codes
+
+
+CRYPTO
+
+The list of cryptocurrencies' API ids from CoinGecko.
+
+
+For example:
+
+  * ALGO: https://www.coingecko.com/en/coins/algorand
+  * ADA: https://www.coingecko.com/en/coins/cardano
+  * ETH: https://www.coingecko.com/en/coins/ethereum
+
+
+**Note**: An API key from CoinGecko is required for cryptocurrencies prices, you can create a demo account by [following this guide](https://support.coingecko.com/hc/en-us/articles/21880397454233-User-Guide-How-to-use-Demo-plan-API-key-).
 
 #### Usage:
 

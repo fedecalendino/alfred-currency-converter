@@ -3,6 +3,7 @@ import sys
 from pyflow.item import Item
 from pyflow.workflow import Workflow
 
+import environment
 import api
 import util
 
@@ -10,22 +11,31 @@ import util
 def fetch_rates(workflow: Workflow):
     rates = {}
 
-    fiats = util.get_env_list(workflow, "FIAT")
+    fiats = util.get_env_list(workflow, environment.FIAT)
     for info in api.fiat.get_rates(*fiats):
         rates[info["symbol"]] = info
 
-    cryptos = util.get_env_list(workflow, "CRYPTO")
-    for info in api.crypto.get_rates(*cryptos):
-        rates[info["symbol"]] = info
+    api_key = workflow.env.get(environment.COINGECKO_API_KEY)
+
+    if api_key:
+        cryptos = util.get_env_list(workflow, environment.CRYPTO)
+
+        for info in api.crypto.get_rates(api_key, *cryptos):
+            rates[info["symbol"]] = info
 
     return rates
 
 
-def fetch_rate(currency: str):
+def fetch_rate(workflow: Workflow, currency: str):
     if api.fiat.is_fiat(currency):
         return api.fiat.get_rates(currency)[0]
 
-    return api.crypto.search(currency)
+    api_key = workflow.env.get(environment.COINGECKO_API_KEY)
+
+    if api_key:
+        return api.crypto.search(api_key, currency)
+
+    return None
 
 
 def get_parameters(workflow: Workflow):
@@ -53,7 +63,7 @@ def add_image_to_item(item: Item, img: str, id_: str):
 
 def main(workflow: Workflow):
     input_amount, input_currency = get_parameters(workflow)
-    input_info = fetch_rate(input_currency)
+    input_info = fetch_rate(workflow, input_currency)
 
     if input_info is None:
         raise ValueError("'{}' is not a valid currency".format(input_currency))
