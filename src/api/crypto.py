@@ -29,6 +29,9 @@ def get_rates(api_key: str, *ids):
     rates = []
 
     for coin in response:
+        if not coin["current_price"]:
+            continue
+
         if not coin["market_cap_rank"]:
             coin["market_cap_rank"] = -1
 
